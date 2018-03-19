@@ -29,15 +29,13 @@
 		<div class="body">
 			<div class="app">
 				<div class="app-header">
-					<div class="app-header__title">
-						Taskr
-					</div>
+					<div class="app-header__title">Taskr</div>
 				</div>
 				<div class="app-body">
 					<ul id="taskrwrap" class="app-tasks">
-						<li id="taskr1" class="app-tasks__item">
+						<li id="taskr1" onclick="recheck(1);" class="app-tasks__item">
 							<label class="app-tasks__label">
-								<input type="checkbox">
+								<input id='check1' type="checkbox">
 								<input onkeyup='newVal(this)' class='appinp' id='subtaskr1' placeholder='Click here to rename task' type='text'>
 								<div class="app-tasks__mark"></div>
 							</label>
@@ -54,7 +52,7 @@
 				if (document.getElementById('subtaskr' + items).value != "") {
 					newVal(document.getElementById("subtaskr" + items));
 					items++;
-					document.getElementById('taskrwrap').innerHTML = document.getElementById('taskrwrap').innerHTML + "<li id='taskr" + items + "' class='app-tasks__item'><label class='app-tasks__label'><input type='checkbox'><input onkeyup='newVal(this)' class='appinp' id='subtaskr" + items + "' placeholder='New task' type='text'><div class='app-tasks__mark'></div></label></li>";
+					document.getElementById('taskrwrap').innerHTML = document.getElementById('taskrwrap').innerHTML + "<li id='taskr" + items + "' onclick='recheck(" + items + ")' class='app-tasks__item'><label class='app-tasks__label'><input type='checkbox' id='check" + items + "'><input onkeyup='newVal(this)' class='appinp' id='subtaskr" + items + "' placeholder='New task' type='text'><div class='app-tasks__mark'></div></label></li>";
 
 					var x = document.getElementById("subtaskr" + (items - 1)).value;
 					document.getElementById("subtaskr" + (items - 1)).value = "";
@@ -67,6 +65,14 @@
 						document.getElementById('taskr' + items).remove();
 						items--;
 					}
+				}
+			}
+
+			function recheck(x) {
+				if($("#check" + x).parent().find('input').is(':checked')) {
+					document.getElementById("check" + x).checked = false;
+				} else {
+					document.getElementById("check" + x).checked = true;
 				}
 			}
 
