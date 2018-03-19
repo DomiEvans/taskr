@@ -430,3 +430,19 @@ body {
 .appinp {
   width: 50%;
 }
+
+
+#taskrwrap::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+#taskrwrap::-webkit-scrollbar {
+  width: .5%;
+  background-color: #F5F5F5;
+}
+
+#taskrwrap::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #555;
+}
