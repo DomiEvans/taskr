@@ -70,9 +70,11 @@
 
 			function recheck(x) {
 				if($("#check" + x).parent().find('input').is(':checked')) {
-					document.getElementById("check" + x).checked = false;
+					//document.getElementById("check" + x).checked = false;
+					document.getElementById("check" + x).removeAttribute("checked");
 				} else {
-					document.getElementById("check" + x).checked = true;
+					//document.getElementById("check" + x).checked = true;
+					document.getElementById("check" + x).addAttribute("checked", "true");
 				}
 			}
 
