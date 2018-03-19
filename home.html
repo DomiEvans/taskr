@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script defer="" src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+		<meta name="description" content="Organize your world easily with Taskr.">
+		<meta name="keywords" content="arylide, quic, quick, quik, quic.cf, flower, fast, search, instant, dominic, satnoianu">
+		<meta name="author" content="Dominic Satnoianu">
+
+		<!-- Facebook -->
+		<meta property="og:title" content="Taskr">
+		<meta property="og:url" content="https://taskr.cf/">
+		<meta property="og:site_name" content="Taskr">
+		<meta property="og:type" content="website">
+		<meta property="og:description" content="Organize your world easily with Taskr.">
+		<meta property="og:image" content="http://static1.fitbit.com/simple.b-cssdisabled-png.he127ee977213a60001f4edd507132981.pack?items=%2Fcontent%2Fassets%2Fonezip%2Fimages%2Fdevices%2Fapp-icon-2x.png">
+		<title>Taskr</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+		<link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700">
+		<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css.css">
+		<link rel="tylesheet" href="scss.css">
+		<link rel="stylesheet" href="toggle-switches.css">
+		<link rel="shortcut icon" href="http://tasket.comli.com/logo.png">
+	</head>
+	<body>
+		<div class="body">
+			<div class="app">
+				<div class="app-header">
+					<div class="app-header__title">
+						<!--img src="http://tasket.comli.com/logo.png" style="width: 45px; height: 45px;"-->
+						Taskr
+					</div>
+				</div>
+				<div class="app-body">
+					<ul id="taskrwrap" class="app-tasks">
+						<li id="taskr1" class="app-tasks__item">
+							<label class="app-tasks__label">
+								<input type="checkbox">
+								<input onkeyup='newVal(this)' class='appinp' id='subtaskr1' placeholder='New task' type='text'>
+								<div class="app-tasks__mark"></div>
+							</label>
+						</li><!--[sec{}cod]-->
+						<!--li class="app-tasks__item">
+							<label class="app-tasks__label">
+								<span>Taskr <a href="/credits">INFO</a></span>
+							</label>
+						</li-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var upd = setInterval(update, 100);
+			var items = 1;
+
+			function update() {
+				if (document.getElementById('subtaskr' + items).value != "") {
+					newVal(document.getElementById("subtaskr" + items));
+					items++;
+					document.getElementById('taskrwrap').innerHTML = document.getElementById('taskrwrap').innerHTML + "<li id='taskr" + items + "' class='app-tasks__item'><label class='app-tasks__label'><input type='checkbox'><input onkeyup='newVal(this)' class='appinp' id='subtaskr" + items + "' placeholder='New task' type='text'><div class='app-tasks__mark'></div></label></li>";
+
+					var x = document.getElementById("subtaskr" + (items - 1)).value;
+					document.getElementById("subtaskr" + (items - 1)).value = "";
+					document.getElementById("subtaskr" + (items - 1)).focus();
+					document.getElementById("subtaskr" + (items - 1)).value = x;
+				}
+
+				if(items > 2) {
+					if(document.getElementById('subtaskr' + items).value == "" && document.getElementById('subtaskr' + (items - 1)).value == "") {
+						document.getElementById('taskr' + items).remove();
+						items--;
+					}
+				}
+			}
+
+			function newVal(x) {
+				x.setAttribute("value", x.value);
+			}
+		</script>
+	</body>
+</html>
